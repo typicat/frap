@@ -52,6 +52,12 @@ def draw_table() -> None:
     table.add_column("Längd (cm)")
     table.add_column("Metod")
     table.add_column("Plats")
+    s_table = Table(title="Statistik 2022")
+    s_table.add_column("Öring")
+    s_table.add_column("Lax")
+    s_table.add_column("Spinn")
+    s_table.add_column("Fluga")
+
     data = scrape()
     for row in data:
         td = row.find_all("td")
@@ -72,7 +78,9 @@ def draw_table() -> None:
         table.add_row(datum, namn, art, langd, metod, plats)
     console = Console()
     console.print(table)
-    print(f"Lax: {lax} \t Öring: {oring} \t|\t Spinn: {spinn} \t Fluga: {fluga}")
+    s_table.add_row(str(oring), str(lax), str(spinn), str(fluga))
+    console.print(s_table)
+   # print(f"Lax: {lax} \t Öring: {oring} \t|\t Spinn: {spinn} \t Fluga: {fluga}")
 
 
 def main() -> None:
