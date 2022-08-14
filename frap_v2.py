@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" 
+"""
 The MIT License (MIT)
 Copyright (c) 2022-, Karl Jonsson
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,7 +23,6 @@ from bs4 import BeautifulSoup
 from rich.console import Console
 from rich.table import Table
 
-
 header = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET",
@@ -31,7 +30,6 @@ header = {
     "Access-Control-Max-Age": "3600",
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.174 Safari/537.36",
 }
-
 
 def scrape():
     url = "https://kagealven.com/fangstrapporter-aktuella/"
