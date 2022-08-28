@@ -80,10 +80,6 @@ def draw_table() -> None:
     s_table.add_row(str(oring), str(lax), str(spinn), str(fluga))
     console.print(s_table)
 
-
-# print(f"Lax: {lax} \t Öring: {oring} \t|\t Spinn: {spinn} \t Fluga: {fluga}")
-
-
 def main() -> None:
     draw_table()
 
