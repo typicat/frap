@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Copyright 2022 Karl Jonsson 
+Copyright 2022 Karl Jonsson
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,8 +14,11 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 """
+
+
 import requests
 from bs4 import BeautifulSoup
+from rich import box
 from rich.console import Console
 from rich.table import Table
 
@@ -37,16 +40,19 @@ def scrape():
     res = soup.find("table").find_all("tr")
     return res
 
+
 def draw_table() -> None:
     lax = oring = spinn = fluga = 0
-    table = Table(title="Fångstrapporter Kågeälven")
+
+    table = Table(title="Fångstrapporter Kågeälven", box=box.SIMPLE)
     table.add_column("Datum", style="dim")
     table.add_column("Namn")
     table.add_column("Art", style="green")
     table.add_column("Längd (cm)")
     table.add_column("Metod")
     table.add_column("Plats")
-    s_table = Table(title="Statistik 2022")
+
+    s_table = Table(title="Statistik 2023", box=box.SIMPLE)
     s_table.add_column("Öring")
     s_table.add_column("Lax")
     s_table.add_column("Spinn")
@@ -67,7 +73,7 @@ def draw_table() -> None:
             spinn += 1
         elif metod == "Fluga":
             fluga += 1
-        langd = td[8].get_text() + " cm"
+        langd = td[8].get_text() + "cm"
         plats = td[10].get_text()
         table.add_row(datum, namn, art, langd, metod, plats)
     console = Console()
@@ -75,8 +81,10 @@ def draw_table() -> None:
     s_table.add_row(str(oring), str(lax), str(spinn), str(fluga))
     console.print(s_table)
 
+
 def main() -> None:
     draw_table()
+
 
 if __name__ == "__main__":
     main()
